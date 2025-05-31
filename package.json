@@ -1,0 +1,19 @@
+{
+  "name": "express-server-viktoriia",
+  "version": "1.0.0",
+  "private": "true",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NataliiaYakovenko/express-server-viktoriia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NataliiaYakovenko/express-server-viktoriia/issues"
+  },
+  "homepage": "https://github.com/NataliiaYakovenko/express-server-viktoriia#readme",
+  "description": ""
+}
