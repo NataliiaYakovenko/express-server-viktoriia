@@ -1,21 +1,20 @@
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
-const {format} = require('date-fns')
+const { format } = require("date-fns");
 const app = express();
 
 //{JSON} Placeholder
 app.get("/", (req, res, next) => {
   res.status(200).send("app result111");
-  res.end();
 });
 
 //CRUD
-app.get("/contacts", (req, res, next) => {});
-app.get("/contacts/1", (req, res, next) => {});
-app.post("/contacts/1", (req, res, next) => {});
-app.patch("/contacts/1", (req, res, next) => {});
-app.delete("/contacts/1", (req, res, next) => {});
-app.get("/users/101/contacts/256", (req, res, next) => {});
+// app.get("/contacts", (req, res, next) => {});
+// app.get("/contacts/1", (req, res, next) => {});
+// app.post("/contacts/1", (req, res, next) => {});
+// app.patch("/contacts/1", (req, res, next) => {});
+// app.delete("/contacts/1", (req, res, next) => {});
+// app.get("/users/101/contacts/256", (req, res, next) => {});
 
 const contactsDB = [
   {
@@ -77,6 +76,20 @@ app.post("/contacts", (req, res) => {
   // В req.body приходе тіло запиту
   const createdContact = contactsDbInstace.createContact(req.body);
   res.status(201).send(createdContact);
+});
+
+//GET localhost:5000/contacts/10?results=10&page=5
+
+app.get("/contacts/:id", (req, res) => {
+  const {
+    params: { id },
+    query: { results, page },
+  } = req;
+
+  console.log("req.params", req.params);
+  console.log("req.query", req.query);
+
+  res.status(200).send("OK");
 });
 
 module.exports = app;
