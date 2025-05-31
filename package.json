@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": "true",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
     "url": "https://github.com/NataliiaYakovenko/express-server-viktoriia/issues"
   },
   "homepage": "https://github.com/NataliiaYakovenko/express-server-viktoriia#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "express": "^5.1.0",
+    "uuid": "^11.1.0"
+  }
 }
