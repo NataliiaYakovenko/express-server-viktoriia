@@ -92,4 +92,17 @@ app.get("/contacts/:id", (req, res) => {
   res.status(200).send("OK");
 });
 
+//звернутися до всіх замовлень певного користувача
+// http://localhost:5000/users/5/orders?isDone=true
+
+app.get("/users/:id/orders", (req, res) => {
+  const {
+    params: { id },
+    query: { isDone },
+  } = req;
+  console.log("id, isDone", id, isDone);
+
+  res.status(200).send("OK");
+});
+
 module.exports = app;
