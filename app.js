@@ -1,7 +1,6 @@
 const express = require("express");
 const { contactsController } = require("./controllers");
 
-
 const app = express();
 
 //{JSON} Placeholder
@@ -20,14 +19,22 @@ app.get("/", (req, res) => {
 });
 
 // CRUD
+
 // Навішування обробника на метод GET на маршрут '/contacts'
+// Отримували всіх
 app.get("/contacts", contactsController.getContacts);
 
 // Навішування обробника на метод POST на маршрут '/contacts'
-app.post("/contacts",contactsController.createContacts);
+// Створювали всіх
+app.post("/contacts", contactsController.createContacts);
+
+// Отримували одного
+app.get("/contacts/:id", contactsController.getContactById);
+
+
+
 
 //GET localhost:5000/contacts/10?results=10&page=5
-
 app.get("/contacts/:id", (req, res) => {
   const {
     params: { id },
