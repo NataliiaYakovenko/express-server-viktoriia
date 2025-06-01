@@ -40,7 +40,8 @@ module.exports.deleteContactById = (req, res) => {
   } = req;
   const deleteContact = ContactDB.deleteContact(id);
   if (deleteContact) {
-    res.status(200).send(deleteContact);
+    //res.status(200).send(deleteContact);
+    res.status(204).send();
   } else {
     res.status(404).send("Contact not founf");
   }
