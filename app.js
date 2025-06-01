@@ -1,5 +1,6 @@
 const express = require("express");
-const { ContactDB } = require("./models");
+const { contactsController } = require("./controllers");
+
 
 const app = express();
 
@@ -20,21 +21,10 @@ app.get("/", (req, res) => {
 
 // CRUD
 // Навішування обробника на метод GET на маршрут '/contacts'
-app.get("/contacts", (req, res) => {
-  const contacts = ContactDB.getContacts();
-  res.status(200).send(contacts);
-});
+app.get("/contacts", contactsController.getContacts);
 
 // Навішування обробника на метод POST на маршрут '/contacts'
-app.post("/contacts", (req, res) => {
-  // В req.body приходе тіло запиту
-  const createdContact = ContactDB.createContact(req.body);
-  res.status(201).send(createdContact);
-});
-
-
-
-
+app.post("/contacts",contactsController.createContacts);
 
 //GET localhost:5000/contacts/10?results=10&page=5
 
