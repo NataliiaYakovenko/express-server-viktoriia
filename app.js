@@ -28,8 +28,14 @@ app.get("/contacts", contactsController.getContacts);
 // Створювали всіх
 app.post("/contacts", contactsController.createContacts);
 
-// Отримували одного
+// Отримували одного 
 app.get("/contacts/:id", contactsController.getContactById);
+
+// Оновлення одного контакту
+app.patch('/contacts/:id',contactsController.updateContactById)
+
+// Видалення контакту
+app.delete('/contacts/:id',contactsController.deleteContactById)
 
 
 
