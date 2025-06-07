@@ -13,7 +13,7 @@ const contactsDB = [
     id: "1",
     name: "Test1",
     telNumber: "+380123456788",
-    birthday: format(new Date(), "Y-MM-dd"),
+    birthday: format(new Date(), "yyyy-mm-dd"),
     isFavourite: true,
   },
 ];
