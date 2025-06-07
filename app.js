@@ -1,6 +1,10 @@
 const express = require("express");
 const { contactsController } = require("./controllers");
-const { validate } = require("./middleware/index");
+const {
+  validate,
+  validationErrorHandler,
+  errorHandler,
+} = require("./middleware/index");
 
 const app = express();
 
@@ -80,5 +84,7 @@ app.get("/users/:id/orders", (req, res) => {
 
   res.status(200).send("OK");
 });
+
+app.use(validationErrorHandler, errorHandler);
 
 module.exports = app;
