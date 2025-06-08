@@ -1,7 +1,10 @@
+const createError = require("http-errors");
 const { ContactDB } = require("../models");
 
 module.exports.getContacts = (req, res) => {
-  const contacts = ContactDB.getContacts();
+  const { page = 1, results = 5 } = req.query;
+
+  const contacts = ContactDB.getContacts(page, results);
   res.status(200).send(contacts);
 };
 
@@ -11,16 +14,17 @@ module.exports.createContacts = (req, res) => {
   res.status(201).send(createdContact);
 };
 
-module.exports.getContactById = (req, res) => {
+module.exports.getContactById = (req, res, next) => {
   const foundContact = ContactDB.getContactById(req.params.id);
   if (foundContact) {
     res.status(200).send(foundContact);
   } else {
-    res.status(404).send("Contact not founf");
+    // res.status(404).send("Contact not founf");
+    next(createError(404, "Contact Not Found"));
   }
 };
 
-module.exports.updateContactById = (req, res) => {
+module.exports.updateContactById = (req, res, next) => {
   const {
     params: { id },
     body,
@@ -30,11 +34,12 @@ module.exports.updateContactById = (req, res) => {
   if (updateContact) {
     res.status(200).send(updateContact);
   } else {
-    res.status(404).send("Contact not founf");
+    // res.status(404).send("Contact not founf");
+    next(createError(404, "Contact Not Found"));
   }
 };
 
-module.exports.deleteContactById = (req, res) => {
+module.exports.deleteContactById = (req, res, next) => {
   const {
     params: { id },
   } = req;
@@ -43,6 +48,7 @@ module.exports.deleteContactById = (req, res) => {
     //res.status(200).send(deleteContact);
     res.status(204).send();
   } else {
-    res.status(404).send("Contact not founf");
+    // res.status(404).send("Contact not founf");
+    next(createError(404, "Contact Not Found"));
   }
 };

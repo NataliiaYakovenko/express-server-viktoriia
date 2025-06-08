@@ -1,10 +1,6 @@
 const express = require("express");
 const { contactsController } = require("./controllers");
-const {
-  validate,
-  validationErrorHandler,
-  errorHandler,
-} = require("./middleware/index");
+const { validate, errorHandler } = require("./middleware/index");
 
 const app = express();
 
@@ -36,10 +32,12 @@ app.get(
 
 // Навішування обробника на метод GET на маршрут '/contacts'
 // Отримували всіх
+// GET http://localhost:5000/contacts?page=1&results=5
 app.get("/contacts", contactsController.getContacts);
 
 // Навішування обробника на метод POST на маршрут '/contacts'
 // Створювали всіх
+
 app.post(
   "/contacts",
   validate.validateContactOnCreate,
@@ -85,6 +83,6 @@ app.get("/users/:id/orders", (req, res) => {
   res.status(200).send("OK");
 });
 
-app.use(validationErrorHandler, errorHandler);
+app.use(errorHandler.validationErrorHandler, errorHandler.errorHandler);
 
 module.exports = app;

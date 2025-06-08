@@ -16,8 +16,105 @@ const contactsDB = [
     birthday: format(new Date(), "yyyy-mm-dd"),
     isFavourite: true,
   },
+  {
+    id: "2",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "3",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "4",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "5",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "6",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "7",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "8",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "9",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "10",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "11",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "12",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "13",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "14",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
+  {
+    id: "15",
+    name: "Test1",
+    telNumber: "+380123456788",
+    birthday: format(new Date(), "yyyy-mm-dd"),
+    isFavourite: true,
+  },
 ];
-
 
 class ContactsDB {
   constructor(arr) {
@@ -29,9 +126,8 @@ class ContactsDB {
     return this.contacts[this.contacts.length - 1];
   }
 
-
-  getContacts() {
-    return [...this.contacts];
+  getContacts(page, results) {
+     return [...this.contacts.slice((page - 1) * results, page * results)];
   }
 
   getContactById(id) {
@@ -59,7 +155,6 @@ class ContactsDB {
       : this.contacts.splice(foundContactIndex, 1);
   }
 }
-
 
 const contactsDbInstace = new ContactsDB(contactsDB);
 
